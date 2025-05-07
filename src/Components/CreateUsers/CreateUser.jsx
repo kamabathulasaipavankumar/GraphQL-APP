@@ -13,7 +13,9 @@ const ADD_USER = gql`
 function CreateUser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER,{
+    refetchQueries: ['GetUsers'] // This will refetch the GetUsers query after adding a user
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,8 +28,8 @@ function CreateUser() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input placeholder="Name" onChange={(e) => setName(e.target.value)} />
-      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <button type="submit">Add User</button>
     </form>
   );
