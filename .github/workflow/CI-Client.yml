@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  client:
+  build:
     name: Build React Client
     runs-on: ubuntu-latest
     defaults:
