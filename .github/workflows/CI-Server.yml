@@ -28,5 +28,5 @@ jobs:
           npm run lint || echo "No lint script"
           npm test || echo "No test script"
 
-      - name: Start server for testing (optional)
-        run: node index.js &
+      - name: Start server for testing
+        run: npm start &
